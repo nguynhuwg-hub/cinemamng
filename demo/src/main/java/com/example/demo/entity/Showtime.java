@@ -6,6 +6,8 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.example.demo.module.cinema.entity.Hall;
+
 @Entity
 @Table(name = "showtimes")
 @Data

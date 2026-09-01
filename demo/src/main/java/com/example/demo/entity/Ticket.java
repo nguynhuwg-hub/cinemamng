@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+import com.example.demo.module.cinema.entity.Seat;
+
 @Entity
 @Table(name = "tickets")
 @Data

@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.example.demo.entity.enums.SeatStatus;
+import com.example.demo.module.cinema.entity.Seat;
 import com.example.demo.module.user.entity.User;
 
 import jakarta.persistence.*;

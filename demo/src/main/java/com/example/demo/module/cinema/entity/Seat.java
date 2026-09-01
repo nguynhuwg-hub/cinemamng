@@ -1,6 +1,7 @@
-package com.example.demo.entity;
+package com.example.demo.module.cinema.entity;
 
-import com.example.demo.entity.enums.SeatType;
+import com.example.demo.common.enums.SeatType;
+
 import jakarta.persistence.*;
 import lombok.*;
 

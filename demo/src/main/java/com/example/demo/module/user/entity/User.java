@@ -5,7 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.demo.entity.City;
+import com.example.demo.module.cinema.entity.City;
 
 import java.time.LocalDateTime;
 
