@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.example.demo.common.enums;
 
 public enum AccountStatus {
     PENDING_VERIFICATION,

@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.module.user.entity;
 
 import com.example.demo.common.enums.RoleName;
 

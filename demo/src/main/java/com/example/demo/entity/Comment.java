@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.demo.module.user.entity.User;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

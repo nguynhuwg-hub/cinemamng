@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import com.example.demo.entity.enums.BookingStatus;
+import com.example.demo.module.user.entity.User;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

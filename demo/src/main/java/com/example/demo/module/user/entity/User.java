@@ -1,9 +1,11 @@
-package com.example.demo.entity;
+package com.example.demo.module.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.example.demo.entity.City;
 
 import java.time.LocalDateTime;
 
