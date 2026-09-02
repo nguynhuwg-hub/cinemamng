@@ -1,7 +1,8 @@
 package com.example.demo.module.cinema.service;
 
-import com.example.demo.module.cinema.dto.CinemaResponse;
-import com.example.demo.module.cinema.dto.CreateCinemaRequest;
+import com.example.demo.module.cinema.dto.cinema.CinemaResponse;
+import com.example.demo.module.cinema.dto.cinema.CreateCinemaRequest;
+import com.example.demo.module.cinema.dto.cinema.UpdateCinemaRequest;
 import com.example.demo.module.cinema.entity.Cinema;
 import com.example.demo.module.cinema.entity.City;
 import com.example.demo.module.cinema.repository.CinemaRepository;
@@ -10,42 +11,73 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CinemaService {
 
     private final CinemaRepository cinemaRepository;
-    private final CityRepository cityRepository; // Bạn tạo thêm CityRepository tương tự CinemaRepository
+    private final CityRepository cityRepository;
+
+    public List<CinemaResponse> getAllCinemas() {
+        return cinemaRepository.findAll().stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    public CinemaResponse getCinemaById(Long id) {
+        Cinema cinema = cinemaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cinema not found with id: " + id));
+        return mapToResponse(cinema);
+    }
 
     public List<CinemaResponse> getCinemasByCity(Long cityId) {
         return cinemaRepository.findByCityId(cityId).stream()
-                .map(cinema -> CinemaResponse.builder()
-                        .id(cinema.getId())
-                        .name(cinema.getName())
-                        .address(cinema.getAddress())
-                        .cityName(cinema.getCity().getName())
-                        .build())
-                .collect(Collectors.toList());
+                .map(this::mapToResponse)
+                .toList();
     }
 
     public CinemaResponse createCinema(CreateCinemaRequest request) {
         City city = cityRepository.findById(request.getCityId())
-                .orElseThrow(() -> new RuntimeException("City not found"));
+                .orElseThrow(() -> new RuntimeException("City not found with id: " + request.getCityId()));
 
-        Cinema cinema = new Cinema();
+        Cinema cinema = Cinema.builder()
+                .name(request.getName())
+                .address(request.getAddress())
+                .description(request.getDescription())
+                .city(city)
+                .build();
+
+        return mapToResponse(cinemaRepository.save(cinema));
+    }
+
+    public CinemaResponse updateCinema(Long id, UpdateCinemaRequest request) {
+        Cinema cinema = cinemaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cinema not found with id: " + id));
+
+        City city = cityRepository.findById(request.getCityId())
+                .orElseThrow(() -> new RuntimeException("City not found with id: " + request.getCityId()));
+
         cinema.setName(request.getName());
         cinema.setAddress(request.getAddress());
+        cinema.setDescription(request.getDescription());
         cinema.setCity(city);
 
-        Cinema saved = cinemaRepository.save(cinema);
+        return mapToResponse(cinemaRepository.save(cinema));
+    }
 
+    public void deleteCinema(Long id) {
+        cinemaRepository.deleteById(id);
+    }
+
+    private CinemaResponse mapToResponse(Cinema cinema) {
         return CinemaResponse.builder()
-                .id(saved.getId())
-                .name(saved.getName())
-                .address(saved.getAddress())
-                .cityName(saved.getCity().getName())
+                .id(cinema.getId())
+                .name(cinema.getName())
+                .address(cinema.getAddress())
+                .description(cinema.getDescription())
+                .cityId(cinema.getCity().getId())
+                .cityName(cinema.getCity().getName())
                 .build();
     }
 }
