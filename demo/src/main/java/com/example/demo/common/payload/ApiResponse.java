@@ -21,11 +21,7 @@ public class ApiResponse<T> {
     @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
 
-    // ==========================================
-    // HELPER METHODS CHO RESPONSE THÀNH CÔNG
-    // ==========================================
-
-    // Trả về thành công kèm tin nhắn và dữ liệu
+   
     public static <T> ApiResponse<T> success(String message, T data) {
         return ApiResponse.<T>builder()
                 .success(true)
