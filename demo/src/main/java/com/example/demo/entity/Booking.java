@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.example.demo.entity.enums.BookingStatus;
+import com.example.demo.module.showtime.entity.Showtime;
 import com.example.demo.module.user.entity.User;
 
 import jakarta.persistence.*;

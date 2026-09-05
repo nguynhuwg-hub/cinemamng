@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.module.movie.entity;
 
 import com.example.demo.entity.enums.MovieStatus;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.module.showtime.entity;
 
 import com.example.demo.entity.enums.SeatStatus;
 import com.example.demo.module.cinema.entity.Seat;
