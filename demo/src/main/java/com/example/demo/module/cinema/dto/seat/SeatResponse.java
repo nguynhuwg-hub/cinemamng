@@ -10,7 +10,7 @@ import lombok.Getter;
 public class SeatResponse {
     private Long id;
     private String seatRow;     // Ví dụ: "A"
-    private Integer seatNumber; // Ví dụ: 1
+    private String seatNumber; // Ví dụ: 1
     private String fullSeatName;// Ví dụ: "A1"
     private SeatType seatType;  // REGULAR, VIP, SWEETBOX
     private Long hallId;

@@ -65,7 +65,7 @@ public class HallService {
                 Seat seat = Seat.builder()
                         .hall(savedHall)
                         .seatRow(rowName)
-                        .seatNumber(col)
+                        .seatNumber(String.valueOf(col))
                         .seatType(SeatType.NORMAL) // Mặc định tạo ghế thường
                         .build();
                 seats.add(seat);

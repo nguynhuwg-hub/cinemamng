@@ -24,7 +24,7 @@ public class Seat {
     private String seatRow; // Ví dụ: A, B, C
 
     @Column(name = "seat_number", nullable = false)
-    private Integer seatNumber; // Ví dụ: 1, 2, 3
+    private String seatNumber; // Ví dụ: 1, 2, 3
 
     @Enumerated(EnumType.STRING)
     @Column(name = "seat_type", nullable = false, length = 20)
